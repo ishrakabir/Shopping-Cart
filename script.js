@@ -17,9 +17,7 @@ function updateAmount(inputId, id1, id2, id3, id4) {
             }
         }
     }
-    // console.log(newVal);
     document.getElementById(id2).value = newVal;
-    // console.log(document.getElementById(id2).value);
     const amount = newVal * id4;
     document.getElementById(id3).innerText = amount;
 }
@@ -29,17 +27,16 @@ function calculateTotal() {
     const phoneTotal = parseFloat(document.getElementById('amount1').innerText);
     const caseTotal = parseFloat(document.getElementById('amount2').innerText);
     subtotal = phoneTotal + caseTotal;
-    // console.log(subtotal);
-
-
     document.getElementById('subTotal').innerText = subtotal;
     const tax = document.getElementById('tax').innerText = parseFloat((subtotal * 0.1).toFixed(1));
     const totalAmount = document.getElementById('total').innerText = subtotal + tax;
-    if (totalAmount >= 1) {
-        
-    };
+    if (totalAmount > 0)
+        document.getElementById('check-out').removeAttribute('disabled');
+  
     return totalAmount;
 }
+
+
 
 function defaults() {
     document.getElementById('amount1').innerText = 0;
@@ -77,5 +74,6 @@ document.getElementById('fa-minus-2').addEventListener('click', function () {
 document.getElementById('check-out').addEventListener('click', function () {
     const amount = calculateTotal();
     alert("Total Paid = " + amount);
+    document.getElementById('check-out').setAttribute('disabled', true);
     defaults();
 });
