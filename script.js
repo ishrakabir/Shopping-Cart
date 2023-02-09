@@ -32,6 +32,10 @@ function calculateTotal() {
     const totalAmount = document.getElementById('total').innerText = subtotal + tax;
     if (totalAmount > 0)
         document.getElementById('check-out').removeAttribute('disabled');
+    else
+        {
+        document.getElementById('check-out').setAttribute('disabled',true);
+        }
   
     return totalAmount;
 }
