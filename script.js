@@ -24,6 +24,7 @@ function updateAmount(inputId, id1, id2, id3, id4) {
     document.getElementById(id3).innerText = amount;
 }
 let subtotal = 0;
+let flag = 0;
 function calculateTotal() {
     const phoneTotal = parseFloat(document.getElementById('amount1').innerText);
     const caseTotal = parseFloat(document.getElementById('amount2').innerText);
@@ -32,13 +33,15 @@ function calculateTotal() {
 
 
     document.getElementById('subTotal').innerText = subtotal;
-    const tax=document.getElementById('tax').innerText =  parseFloat((subtotal * 0.1).toFixed(1));
+    const tax = document.getElementById('tax').innerText = parseFloat((subtotal * 0.1).toFixed(1));
     const totalAmount = document.getElementById('total').innerText = subtotal + tax;
+    if (totalAmount >= 1) {
+        
+    };
     return totalAmount;
 }
 
-function defaults()
-{
+function defaults() {
     document.getElementById('amount1').innerText = 0;
     document.getElementById('amount2').innerText = 0;
     document.getElementById('subTotal').innerText = 0;
@@ -71,9 +74,8 @@ document.getElementById('fa-minus-2').addEventListener('click', function () {
     calculateTotal();
 });
 
-
 document.getElementById('check-out').addEventListener('click', function () {
-    const amount= calculateTotal();
-    alert("Total Paid = "+ amount); 
+    const amount = calculateTotal();
+    alert("Total Paid = " + amount);
     defaults();
 });
